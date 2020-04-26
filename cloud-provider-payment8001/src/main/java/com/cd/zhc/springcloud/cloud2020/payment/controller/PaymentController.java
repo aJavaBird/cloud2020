@@ -25,7 +25,16 @@ public class PaymentController {
     private String serverPort;
 
     @PostMapping(value = "/payment/create")
-    public CommonResult create(/*@RequestBody*/ Payment payment) {
+    public CommonResult create(Payment payment) { // 直接调用
+        return CreateCommon(payment);
+    }
+
+    @PostMapping(value = "/payment/createRest")
+    public CommonResult createRest(@RequestBody Payment payment) { // 使用其他模块调用（RestTemplate）
+        return CreateCommon(payment);
+    }
+
+    public CommonResult CreateCommon(Payment payment) {
         int result = paymentService.create(payment);
         log.info("*****插入结果：" + result);
 
