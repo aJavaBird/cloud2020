@@ -2,5 +2,19 @@ server:
   port: 80
 
 payment:
-  url: http://127.0.0.1:8001
+  #url: http://127.0.0.1:8001
+  url: http://CLOUD-PAYMENT-SERVICE
+
+spring:
+  application:
+    name: cloud-order-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      #defaultZone: http://127.0.0.1:7001/eureka
+      defaultZone: http://eurekaServer1.com:7001/eureka,http://eurekaServer2.com:7002/eureka
   
